@@ -1,0 +1,13 @@
+{
+  "name": "mnksolutions",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Static marketing site for MNK Solutions",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
