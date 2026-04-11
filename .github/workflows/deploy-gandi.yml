@@ -1,0 +1,45 @@
+name: Deploy to Gandi
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-gandi
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure SSH
+        env:
+          GANDI_SSH_KEY: ${{ secrets.GANDI_SSH_KEY }}
+        run: |
+          mkdir -p ~/.ssh
+          chmod 700 ~/.ssh
+          printf '%s\n' "$GANDI_SSH_KEY" > ~/.ssh/gandi
+          chmod 600 ~/.ssh/gandi
+          ssh-keyscan -H git.sd3.gpaas.net >> ~/.ssh/known_hosts 2>/dev/null
+          cat > ~/.ssh/config <<'EOF'
+          Host git.sd3.gpaas.net
+            User e909e2e8-33c5-11f1-97a6-00163e94b645
+            IdentityFile ~/.ssh/gandi
+            IdentitiesOnly yes
+          EOF
+          chmod 600 ~/.ssh/config
+
+      - name: Push to Gandi
+        run: |
+          git remote add gandi git+ssh://e909e2e8-33c5-11f1-97a6-00163e94b645@git.sd3.gpaas.net/default.git
+          git push gandi HEAD:master --force
+
+      - name: Trigger Gandi deploy
+        run: |
+          ssh e909e2e8-33c5-11f1-97a6-00163e94b645@git.sd3.gpaas.net deploy default.git
