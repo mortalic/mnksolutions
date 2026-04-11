@@ -42,4 +42,9 @@ jobs:
 
       - name: Trigger Gandi deploy
         run: |
-          ssh e909e2e8-33c5-11f1-97a6-00163e94b645@git.sd3.gpaas.net deploy default.git
+          set -o pipefail
+          ssh e909e2e8-33c5-11f1-97a6-00163e94b645@git.sd3.gpaas.net deploy default.git 2>&1 | tee deploy.log
+          if grep -qE 'Aborting deployment|Building new application failed|deployment failed' deploy.log; then
+            echo "::error::Gandi deploy reported failure"
+            exit 1
+          fi
