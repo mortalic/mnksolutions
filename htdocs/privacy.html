@@ -15,6 +15,7 @@
       <ul>
         <li><a href="index.html">Home</a></li>
         <li><a href="privacy.html">Privacy</a></li>
+        <li><a href="account-deletion.html">Account Deletion</a></li>
       </ul>
     </nav>
   </header>
@@ -23,41 +24,84 @@
     <h1>Privacy Policy</h1>
     <p class="effective">Effective date: April 2026</p>
 
-    <p>This privacy policy describes how MNK Solutions LLC ("we", "us", "our") collects, uses, and protects information through the Supertrainer mobile application ("the App").</p>
+    <p>This privacy policy describes how MNK Solutions LLC ("we", "us", "our") collects, uses, and protects information through the Supertrainer mobile application ("the App") and its optional cloud sync service ("Formation").</p>
+
+    <h2>Summary</h2>
+    <p>Supertrainer works fully offline without an account. You only share data with us if you opt into the paid Sync subscription, at which point your data is synced to our servers so it is available on your other devices. We do not sell your data, do not use advertising identifiers, and do not embed third-party analytics or tracking SDKs.</p>
 
     <h2>What we collect</h2>
-    <p>The App may collect the following information as entered by coaching staff:</p>
+
+    <h3>Free tier (offline)</h3>
+    <p>When you use the App without a Sync subscription, <strong>we collect nothing</strong>. All data stays on your device. The App does not transmit anything to our servers and does not require an account.</p>
+
+    <h3>Sync tier (paid subscription)</h3>
+    <p>If you subscribe to Sync, we process the following categories of data so we can replicate your coaching data across your devices:</p>
     <ul>
-      <li>Player names</li>
-      <li>Wellness check-in responses</li>
-      <li>Injury reports</li>
-      <li>Drill and practice session data</li>
+      <li><strong>Account information</strong> — email address (required for sign-in and password recovery) and a hashed password. We do not store your password in readable form.</li>
+      <li><strong>Subscription information</strong> — the Google Play purchase token, subscription status, and renewal/expiry dates. Google Play Billing handles the actual payment; we never see your credit card number.</li>
+      <li><strong>Coaching data you enter</strong> — drill library entries (including any photos you attach), practice plans, game schedules, player rosters (names, squad numbers, positions), and session notes.</li>
+      <li><strong>Player wellness data you enter</strong> — check-in scores (sleep, soreness, fatigue, mood), session RPE, injury reports, availability status.</li>
+      <li><strong>Player contact data (optional)</strong> — if you enable the wellness-survey email feature, you may enter a player's email address and/or phone number for delivering the survey link. These fields are only populated with explicit parent/guardian consent, which you record via a consent checkbox in the App.</li>
+      <li><strong>App feedback</strong> — free-form feedback text you submit through the in-app Feedback screen, tagged with the App version you were running.</li>
     </ul>
-    <p>We do not collect device identifiers, location data, or any information beyond what is directly entered into the App by its users.</p>
+
+    <h3>Wellness survey respondents</h3>
+    <p>Players (or their parents/guardians) who receive a wellness-survey email click a magic link and submit check-in scores. We store only the scores and the date of submission. We do not collect the respondent's IP address, browser identifier, or any other passive data.</p>
+
+    <h2>What we do not collect</h2>
+    <ul>
+      <li>Device identifiers (no advertising ID, no IMEI, no Android ID)</li>
+      <li>Precise or approximate location</li>
+      <li>Browsing history outside the App</li>
+      <li>Contact lists from your phone</li>
+      <li>Photos or files beyond what you explicitly attach to a drill</li>
+    </ul>
 
     <h2>How we use your data</h2>
-    <p>Data entered into the App is used solely to provide coaching and team management functionality. When connected to the internet, data is synced to our cloud backend (Formation), operated by MNK Solutions LLC, to enable access across devices and provide backup.</p>
+    <p>Data you enter into the Sync tier is used exclusively to provide the Sync service — replicating your coaching data across your devices, delivering wellness-survey emails you request, and supporting password recovery. We do not use your data for advertising, profiling, or any purpose unrelated to delivering the service you subscribed to.</p>
 
     <h2>Data sharing</h2>
-    <p>We do not sell, rent, or share your data with any third parties. The App contains no advertisements, no analytics SDKs, and no third-party tracking tools.</p>
+    <p>We do not sell, rent, or share your data with any third parties for their own purposes. We rely on a small number of service providers to operate the Sync service, and they process data only on our behalf:</p>
+    <ul>
+      <li><strong>Fly.io</strong> — hosts our Formation backend and PostgreSQL database.</li>
+      <li><strong>Resend</strong> — delivers wellness-survey emails, password-reset emails, and similar transactional mail.</li>
+      <li><strong>Google Play Billing</strong> — processes your subscription payment and notifies us of subscription lifecycle events (renewal, cancellation, refund).</li>
+    </ul>
+    <p>We may disclose information if required to do so by law, subpoena, or other valid legal process.</p>
 
-    <h2>Data storage</h2>
-    <p>Synced data is stored on servers located in the United States. Data is retained for as long as your account is active or as needed to provide the service.</p>
+    <h2>Data storage and retention</h2>
+    <p>Synced data is stored on servers located in the United States. While your Sync subscription is active, we retain your data for as long as you use the service. If your subscription lapses:</p>
+    <ul>
+      <li>Sync continues to work for a 7-day grace period so you can renew without interruption.</li>
+      <li>After the grace period, sync requests are refused but the data is kept for 12 months so you can resume where you left off if you re-subscribe.</li>
+      <li>After 12 months of inactivity, we may permanently delete the data. We will send a notice to your registered email at least 30 days before deletion.</li>
+    </ul>
+    <p>You may request immediate deletion of your account and data at any time. See <a href="account-deletion.html">Account Deletion</a> for instructions.</p>
     <aside class="callout">
       <strong>Note on website hosting:</strong> This marketing website (mnksolutions.dev) is hosted by Gandi on servers located in France. This applies only to the static pages you are currently viewing. No Supertrainer app data, account data, or personal information from users is stored on or transmitted through this website — all app data continues to be stored in the United States as described above.
     </aside>
 
     <h2>Data security</h2>
-    <p>We use industry-standard measures to protect data in transit and at rest. However, no method of electronic transmission or storage is perfectly secure, and we cannot guarantee absolute security.</p>
+    <p>We use industry-standard measures to protect data in transit and at rest: TLS for all network traffic to Formation, Argon2 for password hashing, and bearer tokens that are hashed server-side. However, no method of electronic transmission or storage is perfectly secure, and we cannot guarantee absolute security.</p>
 
     <h2>Children's privacy</h2>
-    <p>The App is intended for use by coaching staff, not minors. We do not knowingly collect personal information from children under 13. If you believe a child has provided us with personal data, please contact us so we can remove it.</p>
+    <p>The App is designed for use by adult coaching staff. Coaches may enter data <em>about</em> players, including minors — for example, a U12 team roster. The consent to enter a player's contact information (email or phone) rests with the coach and the player's parent or guardian, which the coach affirms via the consent checkbox in the App before a wellness-survey email is sent to a minor.</p>
+    <p>We do not knowingly collect personal information directly from children under 13. If you believe a child has submitted information to us outside the coach-mediated wellness-survey flow, please contact us and we will remove it.</p>
+
+    <h2>Your rights</h2>
+    <p>You may:</p>
+    <ul>
+      <li>Request a copy of the data we hold about you.</li>
+      <li>Correct or update your data — most of it is directly editable in the App; for the rest, contact us.</li>
+      <li>Delete your account and data — see <a href="account-deletion.html">Account Deletion</a>.</li>
+      <li>Cancel your subscription at any time through the Google Play Store. Cancelling stops future charges; the subscription remains active until the end of the current billing period.</li>
+    </ul>
 
     <h2>Changes to this policy</h2>
-    <p>We may update this policy from time to time. Changes will be posted on this page with a revised effective date.</p>
+    <p>We may update this policy from time to time. Material changes will be posted on this page with a revised effective date. Continuing to use the Sync service after a change constitutes acceptance of the updated policy.</p>
 
     <h2>Contact us</h2>
-    <p>If you have questions about this privacy policy or your data, please contact us at <a href="mailto:privacy@mnksolutions.dev">privacy@mnksolutions.dev</a>.</p>
+    <p>If you have questions about this privacy policy, your data, or want to exercise any of the rights above, please contact us at <a href="mailto:privacy@mnksolutions.dev">privacy@mnksolutions.dev</a>.</p>
   </main>
 
   <footer>
