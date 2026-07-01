@@ -24,7 +24,13 @@ const MIME = {
 };
 
 function send(res, status, body, headers = {}) {
-  res.writeHead(status, { 'Content-Type': 'text/plain; charset=utf-8', ...headers });
+  const base = {
+    'Content-Type': 'text/plain; charset=utf-8',
+    'X-Content-Type-Options': 'nosniff',
+    'X-Frame-Options': 'DENY',
+  };
+  if (status === 200) base['Cache-Control'] = 'public, max-age=300';
+  res.writeHead(status, { ...base, ...headers });
   res.end(body);
 }
 
@@ -36,7 +42,7 @@ http.createServer((req, res) => {
   const pathname = decodeURIComponent(url.parse(req.url).pathname);
   let filePath = path.join(ROOT, pathname);
 
-  if (!filePath.startsWith(ROOT)) {
+  if (!(filePath === ROOT || filePath.startsWith(ROOT + path.sep))) {
     return send(res, 403, 'Forbidden');
   }
 
@@ -47,8 +53,10 @@ http.createServer((req, res) => {
     fs.readFile(filePath, (err, data) => {
       if (err) return send(res, 404, 'Not Found');
       const type = MIME[path.extname(filePath).toLowerCase()] || 'application/octet-stream';
-      res.writeHead(200, { 'Content-Type': type, 'Content-Length': data.length });
-      res.end(req.method === 'HEAD' ? undefined : data);
+      send(res, 200, req.method === 'HEAD' ? undefined : data, {
+        'Content-Type': type,
+        'Content-Length': data.length,
+      });
     });
   });
 }).listen(PORT, () => {
