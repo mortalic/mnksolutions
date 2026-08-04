@@ -6,6 +6,13 @@ const url = require('url');
 const ROOT = path.join(__dirname, 'htdocs');
 const PORT = process.env.PORT || 3000;
 
+// Last-resort guard: a static file server should never die on a single bad
+// request. Log and keep serving rather than crash-looping (which surfaces as
+// sustained 503s behind Gandi's proxy).
+process.on('uncaughtException', (err) => {
+  console.error('uncaughtException (kept alive):', (err && err.stack) || err);
+});
+
 const MIME = {
   '.html': 'text/html; charset=utf-8',
   '.css':  'text/css; charset=utf-8',
@@ -39,7 +46,14 @@ http.createServer((req, res) => {
     return send(res, 405, 'Method Not Allowed', { Allow: 'GET, HEAD' });
   }
 
-  const pathname = decodeURIComponent(url.parse(req.url).pathname);
+  let pathname;
+  try {
+    pathname = decodeURIComponent(url.parse(req.url).pathname);
+  } catch {
+    // Malformed percent-encoding (e.g. "/%", "/%c0%af") makes decodeURIComponent
+    // throw. Answer 400 instead of letting the error crash the whole process.
+    return send(res, 400, 'Bad Request');
+  }
   let filePath = path.join(ROOT, pathname);
 
   if (!(filePath === ROOT || filePath.startsWith(ROOT + path.sep))) {
