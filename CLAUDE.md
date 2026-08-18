@@ -17,4 +17,4 @@ Static marketing site for MNK Solutions. `server.js` is a hand-rolled static fil
 
 ## Deploy
 
-Pushing to `main` deploys production. `.github/workflows/deploy-gandi.yml` force-pushes to Gandi PaaS and triggers the deploy over SSH. There is no staging environment, so treat every merge to `main` as a production release.
+Anything landing on `main` deploys production: `.github/workflows/deploy-gandi.yml` force-pushes to Gandi PaaS and triggers the deploy over SSH. A GitHub repository rule blocks direct pushes to `main`, so changes go branch, PR, merge, and every merge is a production release. There is no staging environment.
