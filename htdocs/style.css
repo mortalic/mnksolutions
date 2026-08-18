@@ -135,6 +135,33 @@ section p {
   margin-bottom: 1rem;
 }
 
+/* ── Store links ── */
+.store-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin: 1rem 0;
+}
+
+.store-links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 0.5rem 1.25rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--heading);
+  font-weight: 500;
+  font-size: 0.9375rem;
+}
+
+.store-links a:hover {
+  opacity: 1;
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
 /* ── Contact card ── */
 .contact-card {
   background: var(--bg-card);
