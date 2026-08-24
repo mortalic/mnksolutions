@@ -84,14 +84,16 @@
     </ul>
     <p>You may request immediate deletion of your account and data at any time. See <a href="account-deletion.html">Account Deletion</a> for instructions.</p>
 
-    <h3>Player wellness data</h3>
-    <p>Wellness data describes minors in most cases, so it is deleted on a schedule rather than kept for as long as the account lives. A job runs daily and removes:</p>
+    <h3>Player wellness data (children's data retention policy)</h3>
+    <p>Wellness data describes minors in most cases, so it is deleted on a schedule rather than kept for as long as the account lives.</p>
+    <p><strong>Why we collect it.</strong> Wellness check-in scores are collected for one purpose: to show a coach how their squad is feeling before a session, so they can adjust that session. Notes typed into the optional box are collected so a parent can pass the coach something the scores don't capture. We do not use either for advertising, profiling, or any purpose beyond the session it informs, and we do not disclose them to third parties.</p>
+    <p><strong>When we delete it.</strong> A job runs daily and removes:</p>
     <ul>
       <li>Free-text notes from the wellness check-in page, after <strong>90 days</strong>. The scores they were attached to remain.</li>
       <li>Wellness check-in records in full, after <strong>12 months</strong>. The longest calculation the app performs on them looks back 28 days.</li>
       <li>Used and expired wellness-survey links, 30 days after they expire.</li>
     </ul>
-    <p>This happens automatically and applies whether or not the subscription is still active.</p>
+    <p>This happens automatically and applies whether or not the subscription is still active. Records of parental consent are kept for as long as the player is on a roster, because they are the evidence that we were permitted to collect anything at all.</p>
     <aside class="callout">
       <strong>Note on website hosting:</strong> This marketing website (mnksolutions.dev) is hosted by Gandi on servers located in France. This applies only to the static pages you are currently viewing. No Supertrainer app data, account data, or personal information from users is stored on or transmitted through this website. All app data continues to be stored in the United States as described above.
     </aside>
@@ -100,12 +102,13 @@
     <p>We use industry-standard measures to protect data in transit and at rest: TLS for all network traffic to Formation, Argon2 for password hashing, and bearer tokens that are hashed server-side. However, no method of electronic transmission or storage is perfectly secure, and we cannot guarantee absolute security.</p>
 
     <h2>Children's privacy</h2>
-    <p>The App is designed for use by adult coaching staff. Coaches may enter data <em>about</em> players, including minors (for example, a U12 team roster). Two separate confirmations gate the wellness-survey flow:</p>
-    <ul>
-      <li><strong>Before any link is sent.</strong> The coach records that the player's parent or guardian consented, by ticking a box against that player. Our server refuses to send a link to any player without it, and we store when the flag was set and which coach set it.</li>
-      <li><strong>At the moment of submission.</strong> The person filling in the page confirms they are 18 or older, or the player's parent or guardian. Without that confirmation the page rejects the submission.</li>
-    </ul>
-    <p>The survey link is addressed to the contact the coach has on file, which for a younger player should be a parent or guardian rather than the player. We rely on the coach to enter the right contact and to have obtained real-world consent before ticking the box.</p>
+    <p>The App is designed for use by adult coaching staff. Coaches may enter data <em>about</em> players, including minors (for example, a U12 team roster). Before we collect anything <em>from</em> a player or their family, three things have to happen in order:</p>
+    <ol>
+      <li><strong>The coach records consent.</strong> They tick a box confirming the player's parent or guardian agreed, against a named contact. Our server refuses to do anything for a player without it, and we store when the flag was set and which coach set it.</li>
+      <li><strong>We ask the parent ourselves.</strong> The first time a coach requests a check-in for that player, the contact does not receive a check-in link. They receive a notice explaining what we would collect, how it is used, how long we keep it, and how to refuse, with a link to give permission. We follow that with a separate confirmation email, so that if somebody other than the parent clicked the link, the parent still hears about it. Until both of those steps complete, no check-in link is ever sent and nothing about the player is collected.</li>
+      <li><strong>The person answering confirms who they are.</strong> The check-in page will not accept a submission unless the respondent ticks a box saying they are 18 or older, or the player's parent or guardian.</li>
+    </ol>
+    <p>A parent or guardian can withdraw permission at any time using the link in any email we have sent them, without going through the coach. Coaches can also withdraw it on a parent's behalf. Withdrawal stops all future check-in emails immediately.</p>
     <p>If you are a parent or guardian and you want your child's wellness data deleted, or you want to withdraw consent, email us at <a href="mailto:privacy@mnksolutions.dev">privacy@mnksolutions.dev</a> and we will remove it. You do not need an account with us to make that request, and you do not need to go through the coach.</p>
 
     <h2>Your rights</h2>
